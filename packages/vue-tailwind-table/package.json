@@ -1,0 +1,62 @@
+{
+  "name": "vue-tanstack-table",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "license": "MIT",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
+    "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "story:dev": "histoire dev",
+    "story:build": "histoire build",
+    "story:preview": "histoire preview"
+  },
+  "devDependencies": {
+    "@egoist/tailwindcss-icons": "^1.7.4",
+    "@faker-js/faker": "^8.4.1",
+    "@fontsource-variable/inter": "^5.0.17",
+    "@headlessui/vue": "^1.7.19",
+    "@histoire/plugin-vue": "^0.17.12",
+    "@histoire/vendors": "^0.17.8",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/node": "^20.11.24",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vueuse/core": "^10.9.0",
+    "@vueuse/integrations": "^10.9.0",
+    "@vueuse/math": "^10.9.0",
+    "autoprefixer": "^10.4.18",
+    "clsx": "^2.1.0",
+    "dayjs": "^1.11.10",
+    "eslint": "^8.57.0",
+    "fuse.js": "^7.0.0",
+    "histoire": "^0.17.9",
+    "postcss": "^8.4.35",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.5",
+    "vite-plugin-dts": "^3.7.3",
+    "vitest": "^1.3.1",
+    "vitest-environment-nuxt": "^1.0.0",
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.0.0",
+    "vue": "^3.4.21",
+    "vue-tsc": "^2.0.6",
+    "yup": "^1.4.0",
+    "zod": "^3.22.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

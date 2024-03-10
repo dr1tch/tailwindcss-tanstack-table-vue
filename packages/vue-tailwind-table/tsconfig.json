@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "target": "ES6",
+    "declarationDir": "dist/types",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*.vue", "src/**/*.ts", "env.d.ts"],
+  "exclude": [
+    "**/*/stories",
+    "**/*.story.vue",
+    "node_modules",
+    "histoire.config.ts",
+    "config.ts",
+    "histoire.setup.ts",
+    "vite.config.ts",
+    "dist"
+  ]
+}
