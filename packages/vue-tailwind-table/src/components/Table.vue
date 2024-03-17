@@ -194,15 +194,18 @@ const props = defineProps({
   },
   sortButton: {
     type: Object as PropType<Button>,
-    default: () => config.default.sortButton as Button,
+    // default: () => config.default.sortButton as Button,
+    default: null,
   },
   sortAscIcon: {
     type: String,
-    default: () => config.default.sortAscIcon,
+    // default: () => config.default.sortAscIcon,
+    default: null,
   },
   sortDescIcon: {
     type: String,
-    default: () => config.default.sortDescIcon,
+    // default: () => config.default.sortDescIcon,
+    default: null,
   },
   loading: {
     type: Boolean,
@@ -210,18 +213,21 @@ const props = defineProps({
   },
   loadingState: {
     type: Object as PropType<{ icon: string; label: string }>,
-    default: () => config.default.loadingState,
+    // default: () => config.default.loadingState,
+    default: null,
   },
   emptyState: {
     type: Object as PropType<{ icon: string; label: string }>,
-    default: () => config.default.emptyState,
+    // default: () => config.default.emptyState,
+    default: null,
   },
   progress: {
     type: Object as PropType<{
       color: ProgressColor
       animation: ProgressAnimation
     }>,
-    default: () => config.default.progress,
+    // default: () => config.default.progress,
+    default: null,
   },
   class: {
     type: [String, Object, Array] as PropType<any>,

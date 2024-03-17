@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3"
-import faker from "@faker-js/faker"
+import { faker } from "@faker-js/faker"
 import Table from "../components/Table.vue"
 import { computed, ref } from "vue"
 
@@ -81,11 +81,11 @@ const roles = ["Admin", "User", "Guest"]
 const completed = [false, true]
 for (let i = 0; i < 10; i++) {
   users.push({
-    id: faker.random.uuid(),
+    id: faker.random.numeric(),
     title: faker.name.jobTitle(),
     email: faker.internet.email(),
-    completed: completed[Math.floor(Math.random() * completed.length)],
-    role: roles[Math.floor(Math.random() * roles.length)],
+    completed: completed[true],
+    action: faker.name.jobTitle(),
   })
 }
 const Template = (args: any) => ({
@@ -193,21 +193,22 @@ const Template = (args: any) => ({
     )
 
     // Data
-    const users = fetch(
-      `https://jsonplaceholder.typicode.com/todos${searchStatus.value}`
-      // {
-      //   q: search.value,
-      //   _page: page.value,
-      //   _limit: pageCount.value,
-      //   _sort: sort.value.column,
-      //   _order: sort.value.direction,
-      // }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-        return data
-      })
+    // const users = fetch(
+    //   `https://jsonplaceholder.typicode.com/todos${searchStatus.value}`
+    //   // {
+    //   //   q: search.value,
+    //   //   _page: page.value,
+    //   //   _limit: pageCount.value,
+    //   //   _sort: sort.value.column,
+    //   //   _order: sort.value.direction,
+    //   // }
+    // )
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data)
+    //     return data
+    //   })
+    return { args, columns, actions, todoStatus, users }
   },
   template: `<Table v-bind="args" :columns="columns" :actions="actions" :filters="filters" :rows="users" />`,
 })
@@ -219,4 +220,5 @@ Primary.args = {
     todoStatus,
   },
   users,
+  modelValue: ["id", "title", "email", "completed"],
 }
