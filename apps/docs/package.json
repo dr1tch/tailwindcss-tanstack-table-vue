@@ -7,17 +7,14 @@
     "start": "next start ",
     "dev": "next dev -p 3002",
     "lint": "next lint",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next"
-  },
-  "dependencies": {
-    "next": "^14.1.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
-    "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitepress": "1.0.0-rc.45"
   }
 }

@@ -11,3 +11,7 @@ dist-ssr
 server/dist
 public/dist
 .turbo
+
+*storybook.log
+*storybook-static
+**/**/.vitepress/**
