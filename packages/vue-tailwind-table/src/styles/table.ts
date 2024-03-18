@@ -1,6 +1,6 @@
 export default {
   wrapper:
-    "relative overflow-x-auto dark:bg-gray-800 w-full border border-gray-700 rounded-md dark:border-gray-600 dark:bg-gray-900",
+    "relative overflow-x-auto dark:bg-gray-800 w-full border border-gray-400 rounded-md dark:border-gray-600 dark:bg-gray-900",
   base: "min-w-full table-fixed",
   divide: "divide-y divide-gray-300 dark:divide-gray-700",
   thead: "relative",
@@ -20,7 +20,7 @@ export default {
   td: {
     base: "whitespace-nowrap",
     padding: "px-4 py-4",
-    color: "text-gray-500 dark:text-gray-400",
+    color: "text-gray-700 dark:text-gray-400",
     font: "",
     size: "text-sm",
   },
@@ -43,15 +43,13 @@ export default {
     wrapper: "absolute inset-x-0 -bottom-[0.5px] p-0",
   },
   default: {
-    sortAscIcon: "i-heroicons-bars-arrow-up-20-solid",
-    sortDescIcon: "i-heroicons-bars-arrow-down-20-solid",
     sortButton: {
-      icon: "i-heroicons-arrows-up-down-20-solid",
+      icon: "w-5 h-5 font-semibold mx-auto text-gray-500 dark:text-gray-500",
       trailing: true,
       square: true,
       color: "gray" as const,
       variant: "ghost" as const,
-      class: "-m-1.5",
+      class: "-m-1.5 flex justify-start items-center gap-2",
     },
     progress: {
       color: "primary" as const,

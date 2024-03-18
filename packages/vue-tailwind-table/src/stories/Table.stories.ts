@@ -75,45 +75,21 @@ const todoStatus = [
     value: true,
   },
 ]
-
-const users = []
+const data = []
 const roles = ["Admin", "User", "Guest"]
 const completed = [false, true]
 for (let i = 0; i < 10; i++) {
-  users.push({
+  data.push({
     id: faker.random.numeric(),
     title: faker.name.jobTitle(),
     email: faker.internet.email(),
-    completed: completed[true],
-    action: faker.name.jobTitle(),
+    completed: true,
+    action: true,
   })
 }
 const Template = (args: any) => ({
   components: { Table },
   setup() {
-    const columns = [
-      {
-        key: "id",
-        label: "#",
-        sortable: true,
-      },
-      {
-        key: "title",
-        label: "Title",
-        sortable: true,
-      },
-      {
-        key: "completed",
-        label: "Status",
-        sortable: true,
-      },
-      {
-        key: "actions",
-        label: "Actions",
-        sortable: false,
-      },
-    ]
-
     const selectedColumns = ref(columns)
     const columnsTable = computed(() =>
       columns.filter((column) => selectedColumns.value.includes(column))
@@ -191,7 +167,22 @@ const Template = (args: any) => ({
     const pageTo = computed(() =>
       Math.min(page.value * pageCount.value, pageTotal.value)
     )
-
+    // const users = ref(data)
+    const users = computed(() => {
+      const data = []
+      const roles = ["Admin", "User", "Guest"]
+      const completed = [false, true]
+      for (let i = 0; i < 10; i++) {
+        data.push({
+          id: faker.random.numeric(),
+          title: faker.name.jobTitle(),
+          email: faker.internet.email(),
+          completed: true,
+          action: true,
+        })
+      }
+      return data
+    })
     // Data
     // const users = fetch(
     //   `https://jsonplaceholder.typicode.com/todos${searchStatus.value}`
@@ -212,6 +203,15 @@ const Template = (args: any) => ({
   },
   template: `<Table v-bind="args" :columns="columns" :actions="actions" :filters="filters" :rows="users" />`,
 })
+console.log({
+  columns,
+  actions,
+  filters: {
+    todoStatus,
+  },
+  data,
+  modelValue: ["id", "title", "email", "completed"],
+})
 export const Primary: Story = Template.bind({})
 Primary.args = {
   columns,
@@ -219,6 +219,8 @@ Primary.args = {
   filters: {
     todoStatus,
   },
-  users,
+  data,
   modelValue: ["id", "title", "email", "completed"],
 }
+
+export const WithPagination: Story = Template.bind({})

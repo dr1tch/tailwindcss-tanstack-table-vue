@@ -22,25 +22,40 @@
               ui.th.color,
               ui.th.font,
               ui.th.size,
+              column?.class,
             ]"
           >
-            <slot :name="`${column.key}-header`" :column="column">
-              <!-- :sort="sort"
-              :on-sort="onSort" -->
-              <!-- <UButton
+            <slot
+              :name="`${column.key}-header`"
+              :column="column"
+              :sort="sort"
+              :on-sort="onSort"
+            >
+              <button
                 v-if="column.sortable"
                 v-bind="{ ...(ui.default.sortButton || {}), ...sortButton }"
-                :icon="
-                  !sort.column || sort.column !== column.key
-                    ? sortButton.icon || ui.default.sortButton.icon
-                    : sort.direction === 'asc'
-                      ? sortAscIcon
-                      : sortDescIcon
-                "
                 :label="column[columnAttribute]"
                 @click="onSort(column)"
-              /> -->
-              <span>{{ column.label }}</span>
+                :class="ui.default.sortButton.class"
+              >
+                <IconArrowsSort
+                  v-if="!sort.column || sort.column !== column.key"
+                  :class="ui.default.sortButton.icon"
+                  stroke="2"
+                />
+                <IconSortAscending
+                  v-else-if="sort.direction === 'asc'"
+                  :class="ui.default.sortButton.icon"
+                  stroke="2"
+                />
+                <IconSortDescending
+                  v-else-if="sort.direction === 'desc'"
+                  :class="ui.default.sortButton.icon"
+                  stroke="2"
+                />
+                <span>{{ column[columnAttribute] }}</span>
+              </button>
+              <span v-else>{{ column[columnAttribute] }}</span>
             </slot>
           </th>
         </tr>
@@ -73,11 +88,11 @@
           </td>
         </tr> -->
 
-        <!-- <tr v-else-if="emptyState && !rows.length">
+        <tr v-if="emptyState && !rows.length">
           <td :colspan="columns.length + (modelValue ? 1 : 0)">
             <slot name="empty-state">
               <div :class="ui.emptyState.wrapper">
-                <UIcon
+                <IconDatabase
                   v-if="emptyState.icon"
                   :name="emptyState.icon"
                   :class="ui.emptyState.icon"
@@ -89,24 +104,28 @@
               </div>
             </slot>
           </td>
-        </tr> -->
+        </tr>
 
         <tr
           v-for="(row, index) in rows"
           :key="index"
-          :class="[ui.tr.base, $attrs.onSelect && ui.tr.active]"
+          :class="[
+            ui.tr.base,
+            isSelected(row) && ui.tr.selected,
+            $attrs.onSelect && ui.tr.active,
+            row?.class,
+          ]"
+          @click="() => onSelect(row)"
         >
-          <!-- row?.class,
-          isSelected(row) && ui.tr.selected, -->
-          <!-- @click="() => onSelect(row)" -->
-          <!-- <td v-if="modelValue" :class="ui.checkbox.padding">
-              <UCheckbox
-                v-model="selected"
-                :value="row"
-                aria-label="Select row"
-                @click.stop
-              />
-            </td> -->
+          <!-- row?.class,-->
+          <td v-if="modelValue" :class="ui.checkbox.padding">
+            <UCheckbox
+              v-model="selected"
+              :value="row"
+              aria-label="Select row"
+              @click.stop
+            />
+          </td>
 
           <td
             v-for="(column, subIndex) in columns"
@@ -143,16 +162,16 @@ import { PropType, computed, defineProps, toRaw, toRef, useAttrs } from "vue"
 import { defu } from "defu"
 import { upperFirst } from "scule"
 import { useVModel } from "@vueuse/core"
+import {
+  IconArrowsSort,
+  IconDatabase,
+  IconSortAscending,
+  IconSortDescending,
+} from "@tabler/icons-vue"
 import table from "../styles/table"
 import { defaultSort, get, mergeConfig } from "@/utils"
 import { Button, ProgressAnimation, ProgressColor, Strategy } from "@/types"
 import { useUI } from "@/composables/useUi"
-interface User {
-  name: string
-  title: string
-  email: string
-  role: string
-}
 
 const $attrs = useAttrs()
 const emits = defineEmits(["update:modelValue", "update:sort", "update:select"])
