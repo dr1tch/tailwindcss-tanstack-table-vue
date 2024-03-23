@@ -1,7 +1,8 @@
 import { get, omit } from "./lodash"
 import { defu, createDefu } from "defu"
 import { extendTailwindMerge } from "tailwind-merge"
-import type { Strategy, TConfig } from "../types"
+import type {} from "../types"
+import { Strategy, TConfig } from "@/types/ui"
 
 const customTwMerge = extendTailwindMerge<string, string>({
   extend: {

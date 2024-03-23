@@ -1,40 +1,5 @@
-import {
-  type AccessorFn,
-  type AggregationFn,
-  type Cell,
-  type Column,
-  type ColumnDef,
-  type ColumnFiltersState,
-  type ColumnOrderState,
-  type ColumnPinningState,
-  type ColumnSizingInfoState,
-  type ColumnSizingState,
-  type DeepKeys,
-  type DeepValue,
-  type ExpandedState,
-  type FilterFn,
-  type GroupingState,
-  type Header,
-  type HeaderGroup,
-  type OnChangeFn,
-  type PaginationState,
-  type Row,
-  type RowSelectionState,
-  type SortingFn,
-  type SortingState,
-  type Table,
-  type TableOptions,
-  type TableState,
-  type Updater,
-  type VisibilityState,
-} from "@tanstack/vue-table"
-import {
-  type VirtualItem,
-  type Virtualizer,
-  type VirtualizerOptions,
-} from "@tanstack/vue-virtual"
-import { progress, button } from "./styles"
-import { colors } from "./colors"
+import { progress, button } from "../styles"
+import { colors } from "../colors"
 export enum Size {
   dot = "dot",
   xs = "xs",
@@ -138,3 +103,5 @@ export interface Button extends HTMLButtonElement {
   square?: boolean
   truncate?: boolean
 }
+
+export type ToastType = "info" | "success" | "warning" | "error"

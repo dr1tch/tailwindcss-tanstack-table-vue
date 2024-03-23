@@ -170,7 +170,7 @@ import {
 } from "@tabler/icons-vue"
 import table from "../styles/table"
 import { defaultSort, get, mergeConfig } from "@/utils"
-import { Button, ProgressAnimation, ProgressColor, Strategy } from "@/types"
+import { Button, ProgressAnimation, ProgressColor, Strategy } from "@/types/ui"
 import { useUI } from "@/composables/useUi"
 
 const $attrs = useAttrs()
